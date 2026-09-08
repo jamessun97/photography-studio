@@ -28,7 +28,8 @@ test={**original,'records':[r]}
 code,saved=request('PUT',{'state':test,'revision':revision});assert code==200,(code,saved)
 assert request()[1]['state']==test
 assert request('PUT',{'state':original,'revision':revision})[0]==409
-edited={**test,'records':[{**r,'hours':2,'next':'补拍边缘取舍'}]}
+assert request('PUT',{'state':{**original,'records':[{**r,'lessonId':25}]},'revision':saved['revision']})[0]==400
+edited={**test,'records':[{**r,'hours':2,'next':'补拍边缘取舍','lessonId':2,'syllabusVersion':'2026-v2'}]}
 code,updated=request('PUT',{'state':edited,'revision':saved['revision']});assert code==200
 assert request()[1]['state']==edited
 code,restored=request('PUT',{'state':original,'revision':updated['revision']});assert code==200
