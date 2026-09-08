@@ -1,0 +1,76 @@
+{
+  "verified_at": "2026-09-08",
+  "notes": "三张均由机构公开 JPEG 下载，file 识别并 view_image 逐张检查。保留机构提供的完整画幅及边框，未放大、裁切或调色。最长边 1024 至 1200，适合网页，不伪称 1600。版权说明按机构记录保留原有边界，不把 no known restrictions 写成 CC0。",
+  "assets": [
+    {
+      "id": "tetons-snake-river",
+      "category": "风景：层次与光线",
+      "path": "/teaching/tetons-snake-river.jpg",
+      "width": 1200,
+      "height": 972,
+      "original_title": "The Tetons - Snake River, Grand Teton National Park, Wyoming",
+      "author": "Ansel Adams",
+      "date": "1942（NARA 展示页标注）",
+      "source_url": "https://www.archives.gov/research/still-pictures/highlights/the-tetons-snake-river",
+      "download_url": "https://www.archives.gov/files/research/still-pictures/079-aag-01-14-1374m.jpg",
+      "rights_url": "https://docsteach.org/document/the-tetons-snake-river-grand-teton-national-park-wyoming/",
+      "rights": "NARA DocsTeach 标注 Public Domain, Free of Known Copyright Restrictions。该声明针对 NARA 519904 / 79-AAG-1，不应推广至 Adams 全部作品。",
+      "credit": "Ansel Adams / National Archives, 519904 (79-AAG-1), public domain",
+      "background": "出自美国国家公园管理局委托的内政部壁画项目；项目因二战中止，照片留存。",
+      "visible_elements": [
+        "明亮河道从下方前景弯向画面中部，形成连续曲线",
+        "前景树木、中景河谷、远处山峰构成距离层次",
+        "山峰积雪与暗色山体形成明暗边界",
+        "天空云层占据较大面积，明暗块面并不均匀",
+        "左下角树木明显深于河水"
+      ]
+    },
+    {
+      "id": "broad-street",
+      "category": "城市街景：构图与时机",
+      "path": "/teaching/broad-street.jpg",
+      "width": 820,
+      "height": 1024,
+      "original_title": "[Broad Street, New York City]",
+      "author": "摄影者未具名；Detroit Publishing Co. 为出版者",
+      "date": "[1905?]（保留馆藏疑问号）",
+      "source_url": "https://www.loc.gov/item/2016809540/",
+      "download_url": "https://cdn.loc.gov/service/pnp/det/4a10000/4a17000/4a17600/4a17655v.jpg",
+      "rights_url": "https://www.loc.gov/collections/detroit-publishing-company/about-this-collection/rights-and-access/",
+      "rights": "单件记录标注 No known restrictions on publication。LOC 集合说明：在美国出版超过 95 年的照片属于美国公共领域；该件馆藏日期约 1905 年。不要标为 CC0，不应声称所有法域均已确定。",
+      "credit": "Detroit Publishing Co. (publisher) / Library of Congress, LC-DIG-det-4a17655",
+      "background": "纽约 Broad Street 街景，馆藏为 8×10 英寸玻璃底片；可见建筑、人群及马车。记录未注明拍摄者，不将出版公司误写为个人摄影师。",
+      "visible_elements": [
+        "两侧高楼沿街道向远处收拢，形成透视方向",
+        "人群集中在下部，建筑与天空占据上部大部分画面",
+        "近处人物大、远处人物小，强化空间距离",
+        "右侧前景街灯遮挡了部分街道人群",
+        "人群中可见若干间隙与分散站立的人，适合讨论人物重叠与分离"
+      ]
+    },
+    {
+      "id": "migrant-mother",
+      "category": "纪实人物：关系与伦理",
+      "path": "/teaching/migrant-mother.jpg",
+      "width": 810,
+      "height": 1024,
+      "original_title": "Destitute pea pickers in California. Mother of seven children. Age 32",
+      "author": "Dorothea Lange",
+      "date": "1936年3月",
+      "source_url": "https://www.loc.gov/item/2004681697/",
+      "download_url": "https://cdn.loc.gov/service/pnp/ppmsca/50200/50236v.jpg",
+      "rights_url": "https://guides.loc.gov/migrant-mother",
+      "rights": "单件记录及 LOC 研究指南均说明无已知发表/使用限制。摄影发生于 Lange 为 Resettlement Administration 拍摄期间。按馆藏原话标注，不另造 Creative Commons 许可。",
+      "credit": "Dorothea Lange / Library of Congress, LC-DIG-ppmsca-50236; no known restrictions on publication",
+      "background": "摄于加州 Nipomo；LOC 研究指南将人物辨认为 Florence Owens Thompson 与其孩子。此馆藏印相版本明确标注修去前景拇指，可将修图事实作为纪实讨论材料。历史标题应标为馆藏原标题，不能当作仅凭照片可推断的事实。",
+      "visible_elements": [
+        "中央成年人的脸朝向镜头一侧，手贴在脸旁",
+        "两名儿童分别靠向她两侧，脸转离镜头",
+        "下方怀中另有一个婴儿，身体与手形成交叠",
+        "主体占满大部分画幅，环境信息很少",
+        "面部与手部较亮，头发和背景较暗"
+      ],
+      "ethics_prompt": "先写可见事实，再查证人物身份与背景；不要仅从表情推定绝望或坚强。馆藏已注明修掉拇指，可讨论新闻/纪实中改变内容的边界。"
+    }
+  ]
+}

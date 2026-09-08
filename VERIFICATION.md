@@ -6,3 +6,7 @@
 - Optional read-only WebMCP progress tool is feature-detected. No supported WebMCP execution context was available, so registration and execution were not verified. It is not required for the user interface.
 - No real learner records or photographs were seeded. Production starts with an empty account archive.
 - Images remain in the learner's own library; the site saves references and text. AI critique occurs in the conversation, not inside the site. JSON export includes loaded state and unsaved forms; automatic import is not implemented.
+
+## Course v2 checkpoint (not deployed)
+
+24 full lessons, 48 self-test questions, image source records and offline textbook added. TypeScript, production build, corpus completeness, photo-math checks and HTTP render pass. New lesson-field persistence round-trip, final content/workflow review and deployment remain pending. Work paused at the user's quota threshold; see ../RESUME-COURSE-V2.md. Do not treat this checkpoint as a deployed update.
