@@ -53,6 +53,6 @@ parts.append('<section><h1>示例库与来源</h1><p>以下分析先区分可见
 for a in json.loads((ROOT/'content/image-sources.json').read_text())['assets']:
  data=base64.b64encode((ROOT/'public'/a['path'].lstrip('/')).read_bytes()).decode()
  parts.append('<figure><img src="data:image/jpeg;base64,'+data+'" alt="'+html.escape(a['original_title'])+'"><figcaption>'+html.escape(a['author']+' · '+a['date'])+'</figcaption></figure><h2>'+html.escape(a['original_title'])+'</h2><p>'+html.escape(a['background'])+'</p><ul>'+''.join('<li>'+html.escape(x)+'</li>' for x in a['visible_elements'])+'</ul><p>'+html.escape(a['rights'])+' <a href="'+html.escape(a['source_url'])+'">馆藏来源</a></p>')
-parts.append('</section></html>')
+parts.append('''</section><script>let closed=[];addEventListener('beforeprint',()=>{closed=[...document.querySelectorAll('details:not([open])')];closed.forEach(d=>d.open=true)});addEventListener('afterprint',()=>{closed.forEach(d=>d.open=false);closed=[]});</script></html>''')
 (ROOT/'public/teaching/photography-textbook.html').write_text(''.join(parts))
 print(f'Compiled {len(lessons)} lessons; {sum(x["characters"] for x in lessons)} Chinese characters; offline textbook ready.')

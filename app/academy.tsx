@@ -1,5 +1,5 @@
 'use client';
-import { useState, type ReactNode } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import book from '../content/textbook.json';
 import images from '../content/image-sources.json';
 import { glossary, sources } from '../content/reference';
@@ -17,6 +17,7 @@ export function LessonBody({blocks}:{blocks:LessonBlock[]}){return <div classNam
  })}</div>;}
 export default function Academy({initialLesson=1,onStart,onLab}:{initialLesson?:number;onStart:(id:number,title:string)=>void;onLab:()=>void}){
  const [id,setId]=useState(initialLesson);const [search,setSearch]=useState('');const [view,setView]=useState('lessons');const selected=book.lessons.find(l=>l.id===id)||book.lessons[0];
+ useEffect(()=>{let closed:HTMLDetailsElement[]=[];const before=()=>{closed=Array.from(document.querySelectorAll<HTMLDetailsElement>('#academy-reading details:not([open])'));closed.forEach(d=>d.open=true);};const after=()=>{closed.forEach(d=>d.open=false);closed=[];};window.addEventListener('beforeprint',before);window.addEventListener('afterprint',after);return()=>{window.removeEventListener('beforeprint',before);window.removeEventListener('afterprint',after);};},[]);
  const filtered=book.lessons.filter(l=>!search||`${l.title} ${l.blocks.map(b=>b.text||b.items?.join(' ')||b.rows?.flat().join(' ')||'').join(' ')}`.includes(search));
  function choose(n:number){setId(n);setView('lessons');window.history.replaceState(null,'',`?lesson=${n}`);document.getElementById('academy-reading')?.scrollIntoView({block:'start'});}
  return <div className="academy"><div className="page-heading"><p className="eyebrow">完整教材 / 第二版 / 24 节课</p><h1>从观察，走到自己的作品。</h1><p>全部讲解、练习、自测与补练都在这里。每周一节核心课，余下时间反复实拍、选片与完善项目。</p><div className="button-row"><a className="small-button" href="/teaching/photography-textbook.html" download>下载完整离线教材</a><button className="small-button" onClick={onLab}>打开练习工具</button></div></div>

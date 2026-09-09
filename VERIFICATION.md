@@ -1,12 +1,20 @@
-# Verification
+# Verification · course v2
 
-- Production build and TypeScript checking passed after the final source changes.
-- Local HTTP checks cover authentication rejection, cross-origin write rejection, invalid week, missing evidence for reviewed work, create/read persistence, stale revision conflict, edit/read and restoring the original local state. Reproduce using checks/persistence.py with the local schema applied.
-- Final route received HTTP 200 with local sign-in. No browser UI testing was requested or performed.
-- Optional read-only WebMCP progress tool is feature-detected. No supported WebMCP execution context was available, so registration and execution were not verified. It is not required for the user interface.
-- No real learner records or photographs were seeded. Production starts with an empty account archive.
-- Images remain in the learner's own library; the site saves references and text. AI critique occurs in the conversation, not inside the site. JSON export includes loaded state and unsaved forms; automatic import is not implemented.
+Verified locally on 2026-09-09 after the final source changes:
 
-## Course v2 checkpoint (not deployed)
+- `npx tsc --noEmit` and `npm run build` passed.
+- `python3 checks/textbook.py`: 24 delivered lessons, 48 answered self-test questions, consistent tables, working offline fragment targets and 3 embedded source-attributed images. The compiled text contains 28,153 Chinese characters. Print hooks expand answers; print layout has not been visually tested.
+- `node checks/photo-math.mjs`: exposure equivalence, print dimensions, crop boundaries, identity adjustment, histogram and grayscale passed.
+- `python3 checks/persistence.py`: local authentication rejection, cross-origin write rejection, invalid week, missing evidence rejection, old-record create/read, stale revision conflict, invalid lesson number rejection, new lesson/version edit/read and restoration of original local state passed. Production learner data was not used for synthetic tests.
+- Local root HTTP returned 200. No browser UI testing was requested or performed. Photo import/download and page layout were reviewed in source, not exercised through browser UI.
+- `git diff --check` passed. Database schema and existing migration remain unchanged.
 
-24 full lessons, 48 self-test questions, image source records and offline textbook added. TypeScript, production build, corpus completeness, photo-math checks and HTTP render pass. New lesson-field persistence round-trip, final content/workflow review and deployment remain pending. Work paused at the user's quota threshold; see ../RESUME-COURSE-V2.md. Do not treat this checkpoint as a deployed update.
+## Scope and remaining limits
+
+Course text, practice, self-assessment and correction instructions are available without external courses. Skill acquisition still requires actual shooting and project work; 24 weeks is a suggested first cycle.
+
+Text progress and image references persist per account. Images in the lab are temporary browser data; download before leaving. Editing uses JPEG/PNG/WebP copies up to 2400 pixels on the long edge; sequence images use 720-pixel thumbnails. The lab does not decode RAW/HEIC or produce professionally color-managed print masters. AI critique is optional in conversation, not an in-site automatic feature. JSON export includes state and unsaved forms; automatic import is not implemented.
+
+Optional read-only WebMCP progress tool is feature-detected. No supported WebMCP execution context was available, so registration and execution remain unverified; the user interface does not require it.
+
+Publication status and exact deployed source are recorded in the parent workspace's RESUME-COURSE-V2.md after deployment completes.
