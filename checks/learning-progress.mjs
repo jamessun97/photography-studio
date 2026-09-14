@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {schedule,validLearning} from '../app/learning-progress.ts';
+const now=1800000000000;
+const first=schedule(undefined,'good',now);assert.equal(first.due,now+3*86400000);
+const second=schedule(first,'good',now);assert.equal(second.interval,7);
+const failed=schedule(second,'again',now);assert.equal(failed.interval,0);assert.equal(failed.due,now+600000);assert.equal(failed.lapses,1);
+const hard=schedule(second,'hard',now);assert.equal(hard.interval,1);
+assert.equal(schedule({...second,interval:30},'good',now).interval,30);
+assert(validLearning({cards:{exposure:first},decisions:{motion:{attempts:2,correct:1}}}));
+for(const bad of [null,[],{cards:{},decisions:{x:{attempts:1,correct:2}}},{cards:{x:{...first,due:NaN}},decisions:{}},{cards:{x:{...first,lapses:2}},decisions:{}}])assert(!validLearning(bad));
+console.log('PASS: spaced review intervals, relearning, cap, and learning-data validation');

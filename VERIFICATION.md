@@ -18,3 +18,10 @@ Text progress and image references persist per account. Images in the lab are te
 Optional read-only WebMCP progress tool is feature-detected. No supported WebMCP execution context was available, so registration and execution remain unverified; the user interface does not require it.
 
 Publication status and exact deployed source are recorded in the parent workspace's RESUME-COURSE-V2.md after deployment completes.
+
+## Interactive learning additions · 2026-09-14
+
+- Added six-branch course mind map covering all 24 lessons, searchable 28-term table with examples/misconceptions and lesson links, 28 flashcards, 12 scenario decisions and a sourced-photo composition observation tool.
+- `checks/learning-progress.mjs` passes spaced review scheduling, lapse reset, interval cap and malformed progress rejection. `checks/persistence.py` additionally verifies flashcard and scenario history save/read, rejects impossible scores and negative intervals, and restores the local original archive.
+- TypeScript and final production build passed; local `/?view=learning` returned HTTP 200. The preview handoff was queued by the app. No browser interaction or visual QA was requested or performed.
+- Existing records require no migration: learning progress is an optional field within the existing per-user JSON record. Flashcard ratings are self-assessment, not practical-skill certification. Guest practice, recall drafts and observation markers are explicitly temporary. Saving still uses account-scoped revision checking and readback.

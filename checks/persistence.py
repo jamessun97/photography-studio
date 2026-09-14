@@ -32,6 +32,14 @@ assert request('PUT',{'state':{**original,'records':[{**r,'lessonId':25}]},'revi
 edited={**test,'records':[{**r,'hours':2,'next':'补拍边缘取舍','lessonId':2,'syllabusVersion':'2026-v2'}]}
 code,updated=request('PUT',{'state':edited,'revision':saved['revision']});assert code==200
 assert request()[1]['state']==edited
-code,restored=request('PUT',{'state':original,'revision':updated['revision']});assert code==200
+learning={'cards':{'exposure':{'due':1800000000000,'last':1790000000000,'interval':3,'reviews':1,'lapses':0}},'decisions':{'motion':{'attempts':2,'correct':1}}}
+with_learning={**edited,'learning':learning}
+code,reviewed=request('PUT',{'state':with_learning,'revision':updated['revision']});assert code==200,(code,reviewed)
+assert request()[1]['state']==with_learning
+invalid={**learning,'decisions':{'motion':{'attempts':1,'correct':2}}}
+assert request('PUT',{'state':{**edited,'learning':invalid},'revision':reviewed['revision']})[0]==400
+invalid={**learning,'cards':{'exposure':{**learning['cards']['exposure'],'interval':-1}}}
+assert request('PUT',{'state':{**edited,'learning':invalid},'revision':reviewed['revision']})[0]==400
+code,restored=request('PUT',{'state':original,'revision':reviewed['revision']});assert code==200
 assert request()[1]['state']==original
-print('PASS: unauthenticated access, origin rejection, invalid week, evidence requirement, create/read, stale conflict, edit/read, restore')
+print('PASS: unauthenticated access, origin rejection, invalid week, evidence requirement, create/read, stale conflict, edit/read, flashcard/decision persistence, invalid learning rejection, restore')
