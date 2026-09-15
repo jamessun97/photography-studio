@@ -4,7 +4,7 @@
 
 代码已完成，本地生产构建、登录页面、数据库隔离/版本冲突/导入测试通过；HTTP测试确认未登录读取返回401、跨站写入403、同源无效登录输入400。
 
-已创建Supabase免费项目 `photography-learning`（`ysxqudweeksmmdflxogt`），执行学习记录迁移SQL并创建个人身份账号。Vercel Production已连接项目并保存账号别名、邮箱及正式网站地址；Supabase Site URL与 `/auth/confirm` 回调已保存。生产发布与真实跨浏览器回读正在验证，未完成前不将本地测试称为生产同步验证。
+已创建Supabase免费项目 `photography-learning`（`ysxqudweeksmmdflxogt`），执行学习记录迁移SQL并创建个人身份账号。Vercel Production已连接项目并保存账号别名、邮箱及正式网站地址；Supabase Site URL与 `/auth/confirm` 回调已保存。生产版本 `32c2e54` 已发布为Ready。个人账号真实登录、保存并核对成功；在独立的Codex浏览器保存第2周后，Chrome重新载入读到第2周，随后恢复第1周。公开注册与匿名登录关闭。
 
 凭据只取自当前对话，不复制到此文档。旧学习记录迁移从含有真实旧档案的浏览器预览确认，不根据新测试浏览器空状态推断用户没有学习记录。
 
@@ -48,6 +48,6 @@
 
 `npm run build`：生产构建及TypeScript检查。
 
-正式启用还须验证：用户真实登录、两独立浏览器保存/回读、账号退出、旧记录导入、错误密码、断网、两设备冲突，以及找回邮件。确认完成后再报告账号可用。
+生产已验证：个人账号登录、云端保存后回读、两个独立浏览器读取变化后的周次。Chrome迁入入口可见，当前未检测到可迁入的旧localStorage档案；旧备份可手动选择JSON。未实测：找回邮件投递、断网恢复、生产两设备同时写入冲突；冲突与数据隔离由本地真实SQL测试验证。照片原片不属于本次同步范围。
 
 官方资料：[Supabase会话](https://supabase.com/docs/guides/auth/server-side/creating-a-client)、[RLS](https://supabase.com/docs/guides/database/postgres/row-level-security)、[找回密码](https://supabase.com/docs/reference/javascript/auth-resetpasswordforemail)。
