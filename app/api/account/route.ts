@@ -6,7 +6,7 @@ export async function GET() {
     const client = await cloudClient();
     const { data: { user }, error } = await client.auth.getUser();
     if (error && error.status && error.status >= 500) return json({ error: '登录服务暂时不可用，请重试。' }, 503);
-    return json({ configured: true, user: user ? { id: user.id, name: user.user_metadata?.username || '学习者' } : null });
+    return json({ configured: true, user: user ? { id: user.id, name: (typeof user.user_metadata?.username === 'string' ? user.user_metadata.username : user.email === process.env.STUDY_EMAIL ? process.env.STUDY_USERNAME || '学习者' : '学习者') } : null });
   } catch { return json({ error: '无法检查登录状态，请重试。' }, 503); }
 }
 export async function POST(request: Request) {

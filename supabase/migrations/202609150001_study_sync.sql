@@ -8,7 +8,6 @@ create table if not exists public.study_states (
 alter table public.study_states enable row level security;
 revoke all on public.study_states from anon, authenticated;
 grant select on public.study_states to authenticated;
-drop policy if exists study_owner_read on public.study_states;
 create policy study_owner_read on public.study_states for select to authenticated using ((select auth.uid()) = user_id);
 
 -- Atomic compare-and-swap: a stale device cannot overwrite a newer revision.
